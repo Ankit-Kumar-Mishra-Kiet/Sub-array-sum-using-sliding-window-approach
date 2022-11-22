@@ -1,0 +1,48 @@
+//Name Ankit Kumar Mihsra
+//2100290120030
+//Program to find sub array by sliding window approach
+
+#include<stdio.h>
+#include<stdlib.h>
+int subarray(int arr[],int sum,int n)
+{
+    int currsum=0;
+    int start=0;
+    int i;
+    for(i=1;i<=n;i++)
+    {
+        while(currsum>sum&&start<i-1)
+        {
+            currsum=currsum-arr[start];
+            start++;
+        }
+        if(currsum==sum)
+        {printf("Sum found between the indexes %d and %d ",start,i-1);
+        return 1;
+        }
+        if(i<n)
+        currsum=currsum+arr[i];
+    }
+    printf("No subarray found ");
+    return 0;
+}
+
+int main()
+{
+    int n,i,sum;
+    printf("Enter the size of array \n");
+    scanf("%d",&n);
+    int arr[n];
+    for(i=0;i<n;i++)
+    scanf("%d",&arr[i]);
+    printf("Entered array is\n");
+    for(i=0;i<n;i++)
+    printf("%d ",arr[i]);
+    printf("Enter sum ");
+    scanf("%d",&sum);
+    subarray( arr,sum, n);
+    return 0;
+}    
+    
+
+
